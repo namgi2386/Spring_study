@@ -28,4 +28,7 @@ public class UserLoanHistory {
         this.isReturn = true;
     }
 
+    public String getBookName() { // 추가
+        return bookName;
+    }
 }
