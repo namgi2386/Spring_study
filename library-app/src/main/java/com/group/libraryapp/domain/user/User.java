@@ -1,6 +1,10 @@
 package com.group.libraryapp.domain.user;
 
+import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -14,6 +18,9 @@ public class User {
     private String name;
     // age의 경우 null 가능하고 이름도 같으면 굳이 매핑할 필요없음
     private Integer age;
+
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true) // 1:N 설정
+    private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
     public User(){} // jpa사용하려면 기본생성자 필수
 

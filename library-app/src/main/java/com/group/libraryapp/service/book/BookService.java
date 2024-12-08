@@ -45,7 +45,7 @@ public class BookService {
         User user = userRepository.findByName(request.getUserName())
                 .orElseThrow(IllegalArgumentException::new);
         //대출정보 저장
-        userLoanHistoryRepository.save(new UserLoanHistory(user.getId() , book.getName() ));
+        userLoanHistoryRepository.save(new UserLoanHistory(user , book.getName() )); // 연관관계 수정
     }
     @Transactional
     public void returnBook(BookReturnRequest request){
